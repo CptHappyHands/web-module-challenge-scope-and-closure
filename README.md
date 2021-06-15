@@ -43,7 +43,13 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+A closure is what happens when a child function reaches into the parent to grab a value.
+
 2. Study the following code, then answer the questions below.
+
+
+
 
 ```js
 function personalDice(name){
@@ -64,9 +70,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+Closure happens when name is grabbed during the console.log because name was not defined in the anonymous function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The name will always stay the same, but newRoll will change each time because it is a random number.
+
 c. What is the lexical scope of `newRoll`? 
 
+function scope
 
 ### Task 3 - Stretch Goals
 
@@ -80,6 +93,14 @@ See if you can complete one or more of the following challenges:
 var addSix = createBase(6);
 addSix(10); // returns 16
 addSix(21); // returns 27
+
+function createBase(number){
+  return function(num){
+    return number + num;
+  }
+}
+
+let addSix = createBase(6);
 ```
 
 2. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!

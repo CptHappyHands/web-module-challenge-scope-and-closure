@@ -69,7 +69,7 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(){
-    return Math.floor(Math.random()*2);
+    return Math.floor(Math.random()*3);
 }
 
 
@@ -87,11 +87,17 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(inningCB, howManyInnings){
-  return {
-    Home: inningCB(),
-    Away: inningCB(),
+function finalScore(inningCB, innings){
+  let homeScore = 0;
+  let awayScore = 0;
+  
+  for(let i = 0; i<innings; i++){
+   
+     homeScore += inningCB(),
+     awayScore += inningCB();
+     
   }
+  return {Home: homeScore, Away: awayScore};
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -148,8 +154,29 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScoreCB, inningCB, innings) {
+  let totalGame = [];
+  let finalFinal = [];
+  let homeScore = 0;
+  let awayScore = 0;
+  let totalAway = 0;
+  let totalHome = 0;
+  for(let i=0; i<innings; i++){
+   homeScore = inningCB(),
+   awayScore = inningCB();
+   totalHome += homeScore;
+   totalAway += awayScore;
+    finalFinal = [totalAway, totalHome];
+    totalGame.push(`Inning ${i+1}: Away: ${awayScore} - Home: ${homeScore}\n`);
+    // totalGame.push(`Final: Away: ${totalAway} - Home: ${totalHome}`)
+  }
+  totalGame.push(`Final Score: Away: ${totalAway} - Home: ${totalHome}`);
+  if(totalAway === totalHome){
+    return `This game will require extra innings: Away: ${totalAway} - Home: ${totalHome}`;
+  } else {
+  return totalGame;
+  // finalFinal = [totalAway, totalHome];
+  }
 }
 
 
